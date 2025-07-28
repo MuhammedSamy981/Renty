@@ -1,27 +1,34 @@
-# Renty
+# Prerequisites
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.6.
+Before you begin, ensure you have the following installed on your machine:
 
-## Development server
+## APIs (.NET 8)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+[.NET 8 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/8.0)
+IDE (Visual Studio 2022+ or VS Code)
 
-## Code scaffolding
+## UI (Angular 16)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+[Node.js (LTS version)](https://nodejs.org/)
 
-## Build
+## Run APIs
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+1. Open VS Code 
+1. Select File
+1. Open Folder
+1. Select Folder CRUD Application
+1. Select Terminal
+1. New Terminal
+1. Write in Terminal --> `dotnet run --project Presentation`
 
-## Running unit tests
+## Run UI
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+1. Open VS Code 
+1. Select File
+1. Open Folder
+1. Select Folder AngularApp
+1. Select Terminal
+1. New Terminal
+1. Write in Terminal ---> `npm install -g @angular/cli@16.2.6`
+1. And then write ---> `ng serve`
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
