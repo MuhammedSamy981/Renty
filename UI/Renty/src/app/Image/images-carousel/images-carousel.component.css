@@ -1,0 +1,6 @@
+   .carousel-inner .carousel-item div{ 
+ height:400px;
+   background-size:contain;
+   background-position:center;
+   background-repeat: no-repeat;
+}

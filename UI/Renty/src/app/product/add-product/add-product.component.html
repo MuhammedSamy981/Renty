@@ -1,0 +1,149 @@
+
+<div *ngIf="!categories" class="d-flex align-items-center justify-content-center" 
+style="height: 587px;">
+    <div class="spinner-border" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+
+<form class="container" *ngIf="categories" [formGroup]="addProductForm">
+  <div class="col-12 text-center container p-3">
+    <h3  class="text-violet text-uppercase"> Product Form </h3>
+  </div>
+  <div class="form-floating mb-3 container col-6 g-1 align-items-center">
+
+    <input type="test" class="form-control rounded-3 border-violet" id="name" formControlName="name" placeholder="Product Name"
+    [ngClass]="{'is-invalid': addProductForm.controls.name.invalid 
+    && addProductForm.controls.name.touched,
+      'is-valid': addProductForm.controls.name.valid &&
+             addProductForm.controls.name.touched}">
+      <label for="name">Product Name</label>
+            <span class="invalid-feedback" *ngIf="addProductForm.controls.name.touched 
+            && addProductForm.controls.name.errors?.['required']"
+            >
+            This field is required 
+            </span>
+    
+            <span class="invalid-feedback" *ngIf="addProductForm.controls.name.touched && addProductForm.controls.name.errors?.['minlength']"
+            >
+            The Product name is too short
+            </span>
+
+    </div>
+
+    <div class="form-floating mb-3 container col-6 g-1 align-items-center">
+
+      <input type="number" class="form-control rounded-3 border-violet" formControlName="price"
+      [ngClass]="{'is-invalid': addProductForm.controls.price.invalid 
+      && addProductForm.controls.price.touched,
+      'is-valid': addProductForm.controls.price.valid 
+      && addProductForm.controls.price.touched}">
+ 
+                <label for="price">Product Price</label>
+ 
+
+          <span class="invalid-feedback" *ngIf="addProductForm.controls.price.touched && addProductForm.controls.price.errors?.['required']"
+          >
+          This field is required 
+          </span>     
+          <span class="invalid-feedback" *ngIf="addProductForm.controls.price.touched && addProductForm.controls.price.errors?.['max']"
+            >
+            The price is bigger than expected 
+            </span>
+            <span class="invalid-feedback" *ngIf="addProductForm.controls.price.touched && addProductForm.controls.price.errors?.['min']"
+            >
+            The price is smaller than expected 
+            </span>
+
+    </div>
+    
+        <div class="form-floating mb-3 container col-6 g-1 align-items-center">
+
+      <select  class="form-select rounded border-violet" formControlName="category" 
+      [ngClass]="{'is-invalid': addProductForm.controls.category.invalid 
+      && addProductForm.controls.category.touched,
+      'is-valid': addProductForm.controls.category.valid 
+      && addProductForm.controls.category.touched}">
+              <option disabled [value]="0">-Select-</option>
+              <option *ngFor="let category of categories" [value]="category.id">{{category.name}}</option>
+            </select>
+ <label for="category">Category Name</label>
+
+            <span class="invalid-feedback" *ngIf="addProductForm.controls.category.touched && addProductForm.controls.category.errors?.['min']">
+            This field is required 
+            </span>      
+    </div>
+ 
+    
+    <div class="form-floating mb-3 container col-6 g-1 align-items-center">
+
+      <textarea class="form-control rounded-3 border-violet" formControlName="description" 
+       placeholder="Product Description" style="height: 100px"
+       [ngClass]="{'is-invalid': addProductForm.controls.description.invalid 
+       && addProductForm.controls.description.touched,
+       'is-valid': addProductForm.controls.description.valid 
+       && addProductForm.controls.description.touched}">
+       </textarea>
+             <label for="description">Product Description</label>
+            <span class="invalid-feedback" *ngIf="addProductForm.controls.description.touched && addProductForm.controls.description.errors?.['required']"
+            >
+            This field is required 
+            </span>
+    
+
+    </div>
+
+    <div class="container col-6 g-1 align-items-center ">
+      <div class="col-8 mb-3">
+        <label class="btn btn-default p-0">
+          <input style="display: none" type="file" accept="image/*" (change)="onImageUpload1($event)" #selectImage1/>
+          <button class="btn btn-violet" (click)="selectImage1.click()">Select Image 1</button>
+        </label>
+        <div style="width: 18rem;">
+          <img [src]="previews[0]" class="card-img-top" >
+        </div>
+      </div>
+    
+    
+      <div class="col-8 mb-3">
+        <label class="btn btn-default p-0">
+          <input style="display: none" type="file" accept="image/*" (change)="onImageUpload2($event)" #selectImage2/>
+          <button class="btn btn-violet" (click)="selectImage2.click()">Select Image 2</button>
+        </label>
+        <div style="width: 18rem;">
+          <img [src]="previews[1]"  class="card-img-top">
+        </div>
+      </div>
+    
+    
+    <div class="col-8 mb-3">
+      <label class="btn btn-default p-0">
+        <input style="display: none" type="file" accept="image/*" (change)="onImageUpload3($event)" #selectImage3/>
+      <button class="btn btn-violet" (click)="selectImage3.click()">Select Image 3</button>
+      </label>
+      <div style="width: 18rem;">
+        <img [src]="previews[2]" class="card-img-top">
+        </div>
+    </div>
+    
+    
+    <div class="col-8 mb-3">
+    <label class="btn btn-default p-0">
+      <input style="display: none" type="file" accept="image/*" (change)="onImageUpload4($event)"
+       #selectImage4/>
+    <button class="btn btn-violet" (click)="selectImage4.click()">Select Image 4</button>
+    </label>
+      <div style="width: 18rem;">
+       <img [src]="previews[3]" class="card-img-top">
+      </div>
+    </div>
+
+    </div>
+
+    <div class="container col-6 g-1 align-items-center">
+        <button class="col-lg-3 mb-2 btn btn-lg rounded-3 btn-violet" (click)="addProduct($event)"
+        [disabled]="addProductForm.invalid || selectedFiles.length < 4">Add</button>
+    </div>
+</form>
+
+

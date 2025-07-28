@@ -1,0 +1,217 @@
+
+<div *ngIf="!areas || !userId" class="d-flex align-items-center justify-content-center" 
+style="height: 739px;">
+    <div class="spinner-border" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+
+<form *ngIf="areas && userId" class="container" [formGroup]="editAccountForm">
+    <div class="col-12 text-center container p-3">
+      <h3  class="text-violet text-uppercase"> Edit Account Form </h3>
+    </div>
+
+          <div class=" form-floating mb-3 container col-6 g-1 align-items-center">
+
+      <input type="firstName" class="form-control rounded-3 border-violet" id="firstName" 
+      formControlName="firstName" 
+      placeholder="firstName"
+           [ngClass]="{
+            'is-invalid': editAccountForm.controls.firstName.invalid &&
+             editAccountForm.controls.firstName.touched,
+             'is-valid': editAccountForm.controls.firstName.valid &&
+             editAccountForm.controls.firstName.touched}">
+      <label for="firstName">First Name</label>
+
+            <span class="invalid-feedback" 
+            *ngIf="editAccountForm.controls.firstName.touched 
+            && editAccountForm.controls.firstName.errors?.['required']">
+            This field is required
+            </span>
+    
+
+            <span class="invalid-feedback"
+            *ngIf="editAccountForm.controls.firstName.touched 
+            &&editAccountForm.controls.firstName.errors?.['maxlength']">
+            Maximum length is 10 char
+            </span>
+
+    </div>
+
+
+        <div class=" form-floating mb-3 container col-6 g-1 align-items-center">
+
+      <input type="lastName" class="form-control rounded-3 border-violet" id="lastName" formControlName="lastName" 
+      placeholder="lastName"
+      [ngClass]="{'is-invalid': editAccountForm.controls.lastName.invalid &&
+             editAccountForm.controls.lastName.touched,
+      'is-valid': editAccountForm.controls.lastName.valid &&
+             editAccountForm.controls.lastName.touched}">
+      <label for="lastName">Last Name</label>
+
+            <span class="invalid-feedback" 
+            *ngIf="editAccountForm.controls.lastName.touched 
+            && editAccountForm.controls.lastName.errors?.['required']">
+            This field is required
+            </span>
+    
+
+            <span class="invalid-feedback"
+            *ngIf="editAccountForm.controls.lastName.touched 
+            &&editAccountForm.controls.lastName.errors?.['maxlength']">
+            Maximum length is 10 char
+            </span>
+
+    </div>
+
+  <div class="form-floating mb-3 container col-6 g-1 align-items-center">
+      <input type="email" class="form-control rounded-3 border-violet" id="email" formControlName="email" 
+      placeholder="name@example.com"
+      [ngClass]="{'is-invalid': editAccountForm.controls.email.invalid &&
+             editAccountForm.controls.email.touched,
+      'is-valid': editAccountForm.controls.email.valid &&
+             editAccountForm.controls.email.touched}">
+      <label for="floatingInput">Email address</label>
+
+
+          <span class="invalid-feedback" 
+          *ngIf="editAccountForm.controls.email.touched 
+          && editAccountForm.controls.email.errors?.['required']">
+          This field is required
+          </span>
+  
+          <span class="invalid-feedback"
+          *ngIf="editAccountForm.controls.email.touched 
+          && editAccountForm.controls.email.errors?.['email']">
+          email is invalid
+          </span>
+
+  </div>
+
+ 
+    <div class=" form-floating mb-3 container col-6 g-1 align-items-center">
+
+      <input type="phoneNumber" class="form-control rounded-3 border-violet" id="phoneNumber" formControlName="phoneNumber" 
+      placeholder="phoneNumber"
+      [ngClass]="{'is-invalid': editAccountForm.controls.phoneNumber.invalid &&
+             editAccountForm.controls.phoneNumber.touched,
+      'is-valid': editAccountForm.controls.phoneNumber.valid
+             &&editAccountForm.controls.phoneNumber.touched}">
+      <label for="phoneNumber">phoneNumber</label>
+
+            <span class="invalid-feedback" 
+            *ngIf="editAccountForm.controls.phoneNumber.touched 
+            && editAccountForm.controls.phoneNumber.errors?.['required']">
+            This field is required
+            </span>
+    
+
+            <span class="invalid-feedback"
+            *ngIf="editAccountForm.controls.phoneNumber.touched 
+            &&editAccountForm.controls.phoneNumber.errors?.['minlength']">
+            Minimum length is 12 char
+            </span>
+
+    </div>
+
+    
+    <div class=" form-floating mb-3 container col-6 g-1 align-items-center">
+
+      <select class="form-select rounded-3 border-violet" formControlName="country"
+      (change)="onCountryChange()"
+      [ngClass]="{'is-invalid': editAccountForm.controls.country.invalid &&
+              editAccountForm.controls.country.touched,
+      'is-valid': editAccountForm.controls.country.valid &&
+              editAccountForm.controls.country.touched}">
+       <option disabled [value]="0">-Select-</option>
+       <option *ngFor="let country of countries" [value]="country.id">{{country.name}}</option>
+     </select>
+      <label for="country">Country Name</label>
+
+            <span class="invalid-feedback" *ngIf="editAccountForm.controls.country.touched 
+            && editAccountForm.controls.country.errors?.['min']">
+            This field is required 
+            </span>      
+    </div>
+
+     <div class=" form-floating mb-3 container col-6 g-1 align-items-center">
+
+      <select class="col-form-label" class="form-select rounded-3 border-violet" formControlName="city"
+      (change)="onCityChange()"
+      [ngClass]="{'is-invalid': editAccountForm.controls.city.invalid 
+             && editAccountForm.controls.city.touched,
+      'is-valid': editAccountForm.controls.city.valid
+             && editAccountForm.controls.city.touched}">
+       <option disabled [value]="0">-Select-</option>
+       <option *ngFor="let city of cities" [value]="city.id">{{city.name}}</option>
+      </select>
+      <label for="country">City Name</label>
+
+            <span class="invalid-feedback" *ngIf="editAccountForm.controls.city.touched 
+            && editAccountForm.controls.city.errors?.['min']">
+            This field is required 
+            </span>      
+    </div>
+
+    <div class=" form-floating mb-3 container col-6 g-1 align-items-center">
+
+      <select class="col-form-label" class="form-select rounded-3 border-violet" formControlName="area"
+      [ngClass]="{'is-invalid': editAccountForm.controls.area.invalid 
+             && editAccountForm.controls.area.touched,
+      'is-valid': editAccountForm.controls.area.valid
+             && editAccountForm.controls.area.touched}">
+        <option disabled [value]="0">-Select-</option>
+        <option *ngFor="let area of areas" [value]="area.id">{{area.name}}</option>
+      </select>
+       <label for="area">Area Name</label>
+
+            <span class="invalid-feedback" *ngIf="editAccountForm.controls.area.touched 
+            && editAccountForm.controls.area.errors?.['min']">
+            This field is required 
+            </span>      
+    </div>
+
+    <div class="container col-6 g-1 align-items-center">
+        <button class="col-lg-3 mb-2 btn btn-lg rounded-3 btn-violet" 
+        [disabled]="editAccountForm.invalid"  (click)="EditAccount($event)">Edit</button>
+    </div>
+  
+  </form>
+  
+  
+  
+  
+  
+  
+  <!--  <div class="row d-flex" style="margin: 0px;">
+      <form class="row d-flex justify-content-center w-100" >
+        
+      <div class="row d-flex justify-content-center" style="margin: 0px;">
+        <div class="d-flex " style="margin-top: 50px; margin-bottom: 50px; width: 25%; height: 10px; min-width: 440px;">
+          <button type="button " class="LoginButton buttonLeft">
+          <a class="nav-link active" id="tab-login" data-mdb-toggle="pill" [routerLink]="['/Login']" role="tab"
+          aria-controls="pills-login" aria-selected="true">Login</a>
+          </button>
+          <button type="button" class="buttonRight LoginButton  MainButton">
+            <a class="nav-link active" id="tab-login" data-mdb-toggle="pill" [routerLink]="['/Login/Register']" role="tab"
+            aria-controls="pills-login" aria-selected="true">Register</a>
+          </button>
+        </div>
+      </div>
+               <div class="form-outline mb-4">
+                    <label class="form-label" >Location</label><br>
+                    <select formControlName="Location">
+                      <option *ngFor="let G of goverments" value="{{G.governorate_name_en}}">
+                        {{G.governorate_name_en}}
+                      </option>
+                    </select>
+                    <P class="Error"
+                  *ngIf="editAccountForm.controls.Location.touched 
+                  && editAccountForm.controls.Location.errors?.['required']">
+                  This field is required</P>
+                </div>
+              
+        
+      </form>
+    </div>-->
+  

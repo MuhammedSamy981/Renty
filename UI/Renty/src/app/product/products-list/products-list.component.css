@@ -1,0 +1,66 @@
+.search-input-style{
+height: 60px;
+border-radius: 20px;
+border-color: rgb(207, 45, 186);
+}
+
+.search-button {
+    height: 63px;
+    border-radius: 20px;
+    background-color: rgb(121, 50, 115);
+    color: white;
+}
+
+.heart{
+    margin: -10% 100% 0 85%;
+}
+.fa.fa-heart
+{
+font-size: 40px;  
+color: gainsboro;
+}
+.fa.fa-heart:hover
+{
+color: crimson;
+}
+
+.contant .field {
+    background: rgba(3, 3, 3, 0.7);
+    width: 100%;
+    padding-top: 1%;
+    padding-bottom: 4%;
+}
+
+.contant .field i {
+    font-size: 50px;
+    text-align: center;
+    color: red;
+}
+
+.contant input[type="text"], .contant textarea {
+    background: rgba(82, 78, 78, 0.5);
+    color: #fff;
+    border: none;
+}
+
+.contant input {
+    width: 80%;
+}
+.input-lg {
+    height: 46px;
+    padding: 10px 16px;
+    font-size: 18px;
+    line-height: 1.3333333;
+    border-radius: 6px;
+}
+
+.contant button {
+    width: 70%;
+    margin-left: 15%;
+}
+
+.btn-block {
+    display: block;
+    width: 100%;
+}
+

@@ -1,0 +1,223 @@
+<form class="container" [formGroup]="registerForm">
+  <div class="col-12 text-center container p-3">
+    <h3  class="text-violet text-uppercase"> Register Form </h3>
+  </div>
+
+          <div class=" form-floating mb-3 container col-6 g-1 align-items-center">
+
+      <input type="firstName" class="form-control rounded-3 border-violet" id="firstName" 
+      formControlName="firstName" 
+      placeholder="firstName"
+           [ngClass]="{
+            'is-invalid': registerForm.controls.firstName.invalid &&
+             registerForm.controls.firstName.touched,
+             'is-valid': registerForm.controls.firstName.valid &&
+             registerForm.controls.firstName.touched}">
+      <label for="firstName">First Name</label>
+
+            <span class="invalid-feedback" 
+            *ngIf="registerForm.controls.firstName.touched 
+            && registerForm.controls.firstName.errors?.['required']">
+            This field is required
+            </span>
+    
+
+            <span class="invalid-feedback"
+            *ngIf="registerForm.controls.firstName.touched 
+            &&registerForm.controls.firstName.errors?.['maxlength']">
+            Maximum length is 10 char
+            </span>
+
+    </div>
+
+
+        <div class=" form-floating mb-3 container col-6 g-1 align-items-center">
+
+      <input type="lastName" class="form-control rounded-3 border-violet" id="lastName" formControlName="lastName" 
+      placeholder="lastName"
+      [ngClass]="{'is-invalid': registerForm.controls.lastName.invalid &&
+             registerForm.controls.lastName.touched,
+      'is-valid': registerForm.controls.lastName.valid &&
+             registerForm.controls.lastName.touched}">
+      <label for="lastName">Last Name</label>
+
+            <span class="invalid-feedback" 
+            *ngIf="registerForm.controls.lastName.touched 
+            && registerForm.controls.lastName.errors?.['required']">
+            This field is required
+            </span>
+    
+
+            <span class="invalid-feedback"
+            *ngIf="registerForm.controls.lastName.touched 
+            &&registerForm.controls.lastName.errors?.['maxlength']">
+            Maximum length is 10 char
+            </span>
+
+    </div>
+
+  <div class="form-floating mb-3 container col-6 g-1 align-items-center">
+      <input type="email" class="form-control rounded-3 border-violet" id="email" formControlName="email" 
+      placeholder="name@example.com"
+      [ngClass]="{'is-invalid': registerForm.controls.email.invalid &&
+             registerForm.controls.email.touched,
+      'is-valid': registerForm.controls.email.valid &&
+             registerForm.controls.email.touched}">
+      <label for="floatingInput">Email address</label>
+
+
+          <span class="invalid-feedback" 
+          *ngIf="registerForm.controls.email.touched 
+          && registerForm.controls.email.errors?.['required']">
+          This field is required
+          </span>
+  
+          <span class="invalid-feedback"
+          *ngIf="registerForm.controls.email.touched 
+          && registerForm.controls.email.errors?.['email']">
+          email is invalid
+          </span>
+
+  </div>
+
+    
+    <div class=" form-floating mb-3 container col-6 g-1 align-items-center">
+
+        <input type="password" class="form-control rounded-3 border-violet" id="password" formControlName="password"
+         placeholder="Password"
+         [ngClass]="{'is-invalid': registerForm.controls.password.invalid &&
+             registerForm.controls.password.touched,
+      'is-valid': registerForm.controls.password.valid &&
+             registerForm.controls.password.touched}">
+        <label for="password">Password</label>
+      
+            <span class="invalid-feedback" 
+            *ngIf="registerForm.controls.password.touched 
+      && registerForm.controls.password.errors?.['required']">
+      This field is required
+            </span>
+    
+
+            <span class="invalid-feedback"
+            *ngIf="registerForm.controls.password.touched 
+            &&registerForm.controls.password.errors?.['minlength']">
+            Minimum length is 8 char
+            </span>
+
+    </div>
+
+        <div class=" form-floating mb-3 container col-6 g-1 align-items-center">
+
+        <input type="password" class="form-control rounded-3 border-violet" id="confirmPassword" 
+        formControlName="confirmPassword" placeholder="Confirm password"
+        [ngClass]="{'is-invalid': registerForm.hasError('passwordsMismatch') 
+        && registerForm.controls.confirmPassword.touched,
+      'is-valid': !registerForm.hasError('passwordsMismatch') &&
+                registerForm.controls.confirmPassword.touched}">
+        <label for="confirmPassword">Confirm password</label>
+      
+
+
+     <span class="invalid-feedback" 
+     *ngIf="registerForm.controls.confirmPassword.touched 
+      && registerForm.hasError('passwordsMismatch') ">
+      Passwords do not match.
+     </span>
+
+    </div>
+    
+    <div class=" form-floating mb-3 container col-6 g-1 align-items-center">
+
+      <input type="phoneNumber" class="form-control rounded-3 border-violet" id="phoneNumber" formControlName="phoneNumber" 
+      placeholder="phoneNumber"
+      [ngClass]="{'is-invalid': registerForm.controls.phoneNumber.invalid &&
+             registerForm.controls.phoneNumber.touched,
+      'is-valid': registerForm.controls.phoneNumber.valid
+             &&registerForm.controls.phoneNumber.touched}">
+      <label for="phoneNumber">phoneNumber</label>
+
+            <span class="invalid-feedback" 
+            *ngIf="registerForm.controls.phoneNumber.touched 
+            && registerForm.controls.phoneNumber.errors?.['required']">
+            This field is required
+            </span>
+    
+
+            <span class="invalid-feedback"
+            *ngIf="registerForm.controls.phoneNumber.touched 
+            &&registerForm.controls.phoneNumber.errors?.['minlength']">
+            Minimum length is 12 char
+            </span>
+
+    </div>
+
+    
+    <div class=" form-floating mb-3 container col-6 g-1 align-items-center">
+
+      <select class="form-select rounded-3 border-violet" formControlName="country"
+      (change)="onCountryChange()"
+      [ngClass]="{'is-invalid': registerForm.controls.country.invalid &&
+              registerForm.controls.country.touched,
+      'is-valid': registerForm.controls.country.valid &&
+              registerForm.controls.country.touched}">
+       <option disabled [value]="0">-Select-</option>
+       <option *ngFor="let country of countries" [value]="country.id">{{country.name}}</option>
+     </select>
+      <label for="country">Country Name</label>
+
+            <span class="invalid-feedback" *ngIf="registerForm.controls.country.touched 
+            && registerForm.controls.country.errors?.['min']">
+            This field is required 
+            </span>      
+    </div>
+
+     <div class=" form-floating mb-3 container col-6 g-1 align-items-center">
+
+      <select class="col-form-label" class="form-select rounded-3 border-violet" formControlName="city"
+      (change)="onCityChange()" 
+      [ngClass]="{'is-invalid': registerForm.controls.city.invalid 
+             && registerForm.controls.city.touched,
+      'is-valid': registerForm.controls.city.valid
+             && registerForm.controls.city.touched}">
+       <option disabled [value]="0">-Select-</option>
+       <option *ngFor="let city of cities" [value]="city.id">{{city.name}}</option>
+      </select>
+      <label for="country">City Name</label>
+
+            <span class="invalid-feedback" *ngIf="registerForm.controls.city.touched 
+            && registerForm.controls.city.errors?.['min']">
+            This field is required 
+            </span>      
+    </div>
+
+    <div class=" form-floating mb-3 container col-6 g-1 align-items-center">
+
+      <select class="col-form-label" class="form-select rounded-3 border-violet" formControlName="area"
+      
+      [ngClass]="{'is-invalid': registerForm.controls.area.invalid 
+             && registerForm.controls.area.touched,
+      'is-valid': registerForm.controls.area.valid
+             && registerForm.controls.area.touched}">
+        <option disabled [value]="0">-Select-</option>
+        <option *ngFor="let area of areas" [value]="area.id">{{area.name}}</option>
+      </select>
+       <label for="area">Area Name</label>
+
+            <span class="invalid-feedback" *ngIf="registerForm.controls.area.touched 
+            && registerForm.controls.area.errors?.['min']">
+            This field is required 
+            </span>      
+    </div>
+
+    
+    <div class="container col-6 g-1 align-items-center">
+        <button class="col-lg-3 mb-2 btn btn-lg rounded-3 btn-violet" 
+        [disabled]="registerForm.invalid"  (click)="Signup($event)">Sign up</button>
+        <div>
+        <small class="text-body-secondary">By clicking Sign up, you agree to the terms of use.</small></div>
+    </div>
+
+
+
+</form>
+

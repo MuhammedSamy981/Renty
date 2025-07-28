@@ -1,0 +1,152 @@
+
+
+<div *ngIf="!categories || !productId" class="d-flex align-items-center justify-content-center" 
+style="height: 739px;">
+    <div class="spinner-border" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+
+<form class="container" *ngIf="categories && productId" [formGroup]="editProductForm">
+  <div class="col-12 text-center container p-3">
+    <h3  class="text-violet text-uppercase"> Product Form </h3>
+  </div>
+
+ <div class="form-floating mb-3 container col-6 g-1 align-items-center">
+
+    <input type="test" class="form-control rounded-3 border-violet" id="name" formControlName="name" placeholder="Product Name"
+    [ngClass]="{'is-invalid': editProductForm.controls.name.invalid 
+    && editProductForm.controls.name.touched,
+      'is-valid': editProductForm.controls.name.valid &&
+             editProductForm.controls.name.touched}">
+      <label for="name">Product Name</label>
+            <span class="invalid-feedback" *ngIf="editProductForm.controls.name.touched 
+            && editProductForm.controls.name.errors?.['required']"
+            >
+            This field is required 
+            </span>
+    
+            <span class="invalid-feedback" *ngIf="editProductForm.controls.name.touched && editProductForm.controls.name.errors?.['minlength']"
+            >
+            The Product name is too short
+            </span>
+
+    </div>
+
+    <div class="form-floating mb-3 container col-6 g-1 align-items-center">
+
+      <input type="number" class="form-control rounded-3 border-violet" formControlName="price"
+      [ngClass]="{'is-invalid': editProductForm.controls.price.invalid 
+      && editProductForm.controls.price.touched,
+      'is-valid': editProductForm.controls.price.valid 
+      && editProductForm.controls.price.touched}">
+ 
+                <label for="price">Product Price</label>
+ 
+
+          <span class="invalid-feedback" *ngIf="editProductForm.controls.price.touched && editProductForm.controls.price.errors?.['required']"
+          >
+          This field is required 
+          </span>     
+          <span class="invalid-feedback" *ngIf="editProductForm.controls.price.touched && editProductForm.controls.price.errors?.['max']"
+            >
+            The price is bigger than expected 
+            </span>
+            <span class="invalid-feedback" *ngIf="editProductForm.controls.price.touched && editProductForm.controls.price.errors?.['min']"
+            >
+            The price is smaller than expected 
+            </span>
+
+    </div>
+    
+        <div class="form-floating mb-3 container col-6 g-1 align-items-center">
+
+      <select  class="form-select rounded border-violet" formControlName="category" 
+      [ngClass]="{'is-invalid': editProductForm.controls.category.invalid 
+      && editProductForm.controls.category.touched,
+      'is-valid': editProductForm.controls.category.valid 
+      && editProductForm.controls.category.touched}">
+              <option disabled [value]="0">-Select-</option>
+              <option *ngFor="let category of categories" [value]="category.id">{{category.name}}</option>
+            </select>
+ <label for="category">Category Name</label>
+
+            <span class="invalid-feedback" *ngIf="editProductForm.controls.category.touched && editProductForm.controls.category.errors?.['min']">
+            This field is required 
+            </span>      
+    </div>
+ 
+    
+    <div class="form-floating mb-3 container col-6 g-1 align-items-center">
+
+      <textarea class="form-control rounded-3 border-violet" formControlName="description" 
+       placeholder="Product Description" style="height: 100px"
+       [ngClass]="{'is-invalid': editProductForm.controls.description.invalid 
+       && editProductForm.controls.description.touched,
+       'is-valid': editProductForm.controls.description.valid 
+       && editProductForm.controls.description.touched}">
+       </textarea>
+             <label for="description">Product Description</label>
+            <span class="invalid-feedback" *ngIf="editProductForm.controls.description.touched && editProductForm.controls.description.errors?.['required']"
+            >
+            This field is required 
+            </span>
+    
+
+    </div>
+
+    <div class="container col-6 g-1 align-items-center ">
+      <div class="col-8 mb-3">
+        <label class="btn btn-default p-0">
+          <input style="display: none" type="file" accept="image/*" (change)="onImageUpload1($event)" #selectImage1/>
+          <button class="btn btn-violet" (click)="selectImage1.click()" [disabled]="isImage1Loaded">Select Image 1</button>
+        </label>
+        <div style="width: 18rem;">
+          <img [src]="previews[0]" class="card-img-top" >
+        </div>
+      </div>
+    
+    
+      <div class="col-8 mb-3">
+        <label class="btn btn-default p-0">
+          <input style="display: none" type="file" accept="image/*" (change)="onImageUpload2($event)" #selectImage2/>
+          <button class="btn btn-violet" (click)="selectImage2.click()" [disabled]="isImage2Loaded">Select Image 2</button>
+        </label>
+        <div style="width: 18rem;">
+          <img [src]="previews[1]"  class="card-img-top">
+        </div>
+      </div>
+    
+    
+    <div class="col-8 mb-3">
+      <label class="btn btn-default p-0">
+        <input style="display: none" type="file" accept="image/*" (change)="onImageUpload3($event)" #selectImage3/>
+      <button class="btn btn-violet" (click)="selectImage3.click()" [disabled]="isImage3Loaded">Select Image 3</button>
+      </label>
+      <div style="width: 18rem;">
+        <img [src]="previews[2]" class="card-img-top">
+        </div>
+    </div>
+    
+    
+    <div class="col-8 mb-3">
+    <label class="btn btn-default p-0">
+      <input style="display: none" type="file" accept="image/*" (change)="onImageUpload4($event)"
+       #selectImage4/>
+    <button class="btn btn-violet" (click)="selectImage4.click()" [disabled]="isImage4Loaded">Select Image 4</button>
+    </label>
+      <div style="width: 18rem;">
+       <img [src]="previews[3]" class="card-img-top">
+      </div>
+    </div>
+
+    </div>
+    
+    <div class="container col-6 g-1 align-items-center">
+        <button class="col-lg-3 mb-2 btn btn-lg rounded-3 btn-violet" (click)="editProduct($event)"
+        [disabled]="editProductForm.invalid || previews.length < 4">Edit</button>
+    </div>
+</form>
+
+
+

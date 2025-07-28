@@ -1,0 +1,19 @@
+
+<div *ngIf="!product" class="d-flex align-items-center justify-content-center" 
+style="height: 739px;">
+    <div class="spinner-border" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+
+
+<div *ngIf="product" class="card">
+    <div class="card-body">
+      <h5 class="card-title">product Name : {{product.name}}</h5>
+        <h5 class="card-title">product Price : {{product.price}}</h5>
+      <p class="card-text">Do you really want to delete this product ?</p> 
+      
+<button class="btn btn-danger me-2" (click)="DeleteProduct($event)" >Yes</button>
+<a class="btn btn-primary" [routerLink]="'/'">No</a>
+    </div>
+  </div>

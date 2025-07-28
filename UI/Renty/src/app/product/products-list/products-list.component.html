@@ -1,0 +1,58 @@
+
+<div *ngIf="!products || city==null" class="d-flex align-items-center justify-content-center" 
+style="height: 739px;">
+    <div class="spinner-border" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+
+
+<section *ngIf="products && products!=[] && city!=null" class="mt-5">
+    <div class="container">
+
+
+      <div class="col-lg-8 text-center container ps-lg-5 pe-lg-4 ps-md-3 pe-md-0 mb-2">
+        <app-products-filters *ngIf="city!=null" [city]="city"></app-products-filters>
+      </div>
+
+      
+
+      <div class="row">
+        <div class="col-lg-4 col-md-6 d-flex align-items-stretch justify-content-center mb-5"
+         *ngFor="let product of paginatedProducts">
+          <div class="card" style="width: 600px;">
+            <img [src]="product.interfaceImageUrl" style="height: 410px;"
+             class="card-img-top" alt="Product Image">
+             <div class="card-body">
+              <h5 class="card-title">{{product.name}}</h5>
+              <p class="card-text">{{product.clientsCount}} Clients</p>
+              <div class="d-flex justify-content-between align-items-center">
+                  <span class="h5 mb-0">{{product.price}} EGP/day</span>
+                  <div>
+                    <app-stars-ratings [rating]="product.overallRating"></app-stars-ratings>
+                      <small class="text-muted">({{product.overallRating}})</small>
+                  </div>
+              </div>
+          </div>
+          <div class="card-footer d-flex justify-content-between">
+           <a [routerLink]="'/product/'+product.id" class="btn btn-primary btn-sm">More Details</a>  
+           <button (click)="AddBookmark(product.id)" class="btn btn-outline-secondary btn-sm">
+            <i class="bi bi-heart"></i></button>
+          </div>
+
+           </div>
+          </div>
+        </div>
+
+
+    <app-pagination *ngIf="products"
+[sizeOfPage]="sizeOfPage"
+[data]="products"
+(sendedData)="GetData($event)"></app-pagination>
+
+    
+    </div>
+</section>
+
+
+

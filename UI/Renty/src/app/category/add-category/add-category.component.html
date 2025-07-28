@@ -1,0 +1,14 @@
+<form class="container" [formGroup]="categoryForm">
+      <input type="text" class="form-control mb-2" formControlName="name" 
+      placeholder="Enter the category name">
+
+      <span class="form-text text-danger ms-2" 
+      *ngIf="categoryForm.controls.name.touched && categoryForm.controls.name.errors?.['required']" >
+      This field is required 
+      </span>
+
+      <div class="container text-center g-1 my-2">    
+  <button class="btn btn-success" type="button"
+        (click)="AddCategory($event)">Add</button>
+    </div>
+</form>

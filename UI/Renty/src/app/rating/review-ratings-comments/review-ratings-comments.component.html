@@ -1,0 +1,40 @@
+     <div *ngIf="!ratings">
+    <div class="spinner-border" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+
+        <section *ngIf="ratings" id="ratings">
+    <h2>Section title</h2>
+    <div class="table-responsive small">
+      <table class="table table-striped table-sm">
+
+   <thead>
+      <tr>
+      <th scope="col">#</th>
+      <th scope="col">User Name</th>  
+      <th scope="col">Comment</th>
+      </tr>
+   </thead>
+   <tbody *ngIf="ratings!">
+      <tr *ngFor="let rating of ratings">
+      <td>{{ratings.indexOf(rating)+1}}</td>
+        <td>{{rating.fullName}}</td>
+        <td>{{rating.comment}}</td>
+     <td>
+        <a class="btn btn-success me-md-1 mb-1" [routerLink]="'/rating/keep/'+rating.id"
+           onclick="return confirm('Are you sure you want to keep this comment?')">keep</a>
+        <a class="btn btn-danger mb-1" [routerLink]="'/rating/delete/'+rating.id"
+           onclick="return confirm('Are you sure you want to delete this comment?')">delete</a>
+     </td>
+      </tr>
+   </tbody>
+      </table>
+    </div>
+    
+         <app-pagination *ngIf="ratings!.length!=0 && sizeOfRatingsPage!=0"
+[sizeOfPage]="sizeOfRatingsPage"
+[data]="ratings"
+(sendedData)="GetRatingsData($event)"></app-pagination>
+          
+  </section>

@@ -1,0 +1,25 @@
+<form class="container" [formGroup]="cityForm">
+    <input type="text" class="form-control" formControlName="name" 
+    placeholder="Enter the city name">
+
+    <span class="form-text text-danger ms-2" 
+    *ngIf="cityForm.controls.name.touched && cityForm.controls.name.errors?.['required']" >
+    This field is required 
+    </span>
+
+    <select class="form-select mt-2" formControlName="country">
+     <option [value]="0">-Select-</option>
+     <option *ngFor="let country of countries" [value]="country.id">{{country.name}}</option>
+   </select>
+
+   <span class="form-text text-danger" *ngIf="cityForm.controls.country.touched 
+   && cityForm.controls.country.errors?.['required']">
+   This field is required 
+   </span>  
+
+
+     <div class="container text-center g-1 my-2">      
+  <button class="btn btn-success" type="button"
+      (click)="AddCity($event)">Add</button>
+  </div>
+</form>

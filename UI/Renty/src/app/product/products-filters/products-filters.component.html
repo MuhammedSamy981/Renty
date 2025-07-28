@@ -1,0 +1,28 @@
+<form class="d-flex" class="row" role="search">
+
+    <div class="container col-lg-4 col-md-6 g-3 mb-2">
+    <input type="text" class="form-control  me-2 border border-violet"
+     placeholder="Product name" #product>
+    </div>
+
+    <div class="container col-lg-4 col-md-6 g-3 mb-2">
+    <select class="form-select  me-2 border border-violet"  #category>
+     <option [value]="0">-Select category-</option>
+     <option *ngFor="let category of categories" [value]="category.id">{{category.name}}</option>
+   </select>
+   </div>
+
+   <div class="container col-lg-4 col-md-6 g-3 mb-2">
+  <select class="form-select  me-2 border border-violet" #area>
+    <option [value]="0">-Select area-</option>
+    <option *ngFor="let area of areas" [value]="area.id">{{area.name}}</option>
+  </select>
+  </div>
+  
+  <div class="container col-lg-4 col-md-6 g-3 mb-2">
+    <button class="btn btn-violet " type="button" 
+    (click)="search(product.value,category.value,area.value)">
+    <span class="fa fa-search"></span> search</button>  
+    </div>
+
+  </form>

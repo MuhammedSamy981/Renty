@@ -1,0 +1,83 @@
+ <div *appHasRole="['Admin','Manager']; else not">
+  <app-admin></app-admin>
+</div>
+
+<ng-template #not>
+ <nav id="navbar" class="navbar navbar-expand-md bg-dark sticky-top border-bottom">
+    <div class="container">
+    <a class="navbar-brand d-md-none" href="#">
+      <img src="assets/logo.png" alt="Renty"  width="80" height="30">
+    </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" aria-controls="offcanvas" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvas" aria-labelledby="offcanvasLabel">
+      <div class="offcanvas-header">
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <ul class="navbar-nav flex-grow-1 justify-content-between">
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+             <img src="assets/logo.png" alt="Renty"  width="80" height="30">
+          </a>
+        </li>
+        <li class="nav-item"><a class="nav-link" [routerLink]="'/'">Home</a></li>
+        <li class="nav-item"><a class="nav-link" [routerLink]="'/product/'">Products</a></li>
+<li class="nav-item"><a class="nav-link" [routerLink]="'/user/register'">Registration</a></li>
+
+<ng-template #notLogin>
+<li class="nav-item"><a class="nav-link" [routerLink]="'/user/login'">Log in</a></li>
+</ng-template>
+        
+                <li *appHasRole="['Admin', 'User'] else notLogin" class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle"  role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            My profile
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" [routerLink]="'/product/management'">Product management</a></li>
+            <li><a class="dropdown-item" [routerLink]="'/wishlist'">Wishlist</a></li>
+            <li><a class="dropdown-item" [routerLink]="'/user/editAccount'">Edit account</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#" (click)="logOut()">Log out</a></li>
+          </ul>
+
+        </ul>
+      </div>
+      </div>
+    </div>
+    </nav>
+    
+    <main>
+<router-outlet></router-outlet>
+</main>
+
+
+  <footer class="footer mt-4 py-4 border-top">
+  <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="mb-0">&copy; 2025 Renty. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <a href="#" class="text-white me-3">Privacy Policy</a>
+                    <a href="#" class="text-white me-3">Terms of Service</a>
+                    <a href="#" class="text-white">FAQ</a>
+                </div>
+            </div>
+  </div>
+</footer>
+
+</ng-template>
+
+
+<!-- data-type="standard"
+         data-shape="rectangular"
+         data-theme="filled_blue"
+         data-text="signin_with"
+         data-size="large"-->
+
+
+
+
+

@@ -1,0 +1,32 @@
+<div *ngFor="let rating of ratings">
+  <div class="card-body border-bottom" [hidden]="rating.userId==currentUserId && deletingStatus">
+
+      <div class="d-flex mb-3 align-items-center">
+        <img src="https://i.ibb.co/TL25Mpf/def-face.jpg" alt=""
+         class="rounded-circle avatar-lg me-2" style="
+        width: 50px;
+        height: 50px;
+    ">
+         <div class="ml-2">
+            <h5 class="mb-0">
+              {{rating.fullName}}
+            </h5>
+            <small>{{rating.datetime| date : "medium"}}</small>
+         </div>
+      </div>
+      <div class="mb-2">
+
+         <span class="font-14 mr-2">
+          <app-stars-ratings [rating]="rating.value"></app-stars-ratings>
+        </span>
+      </div>
+      <p>
+        {{rating.comment}}
+      </p>
+      <button [hidden]="rating.userId!=currentUserId" class="btn btn-danger btn-sm mr-2"
+      (click)="deleteRating()">Remove</button>
+      <button [hidden]="!reportStatus"  class="btn btn-warning btn-sm mr-2"
+      (click)="reportAbuse(rating.id)">Report abuse</button>
+
+  </div>
+</div>

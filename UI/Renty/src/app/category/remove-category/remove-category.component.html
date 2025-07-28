@@ -1,0 +1,18 @@
+<form class="container" [formGroup]="categoryForm">
+
+      <select  class="form-select" class="form-select" formControlName="category" >
+        <option [value]="0">-Select-</option>
+        <option *ngFor="let category of categories" [value]="category.id">{{category.name}}</option>
+      </select>
+
+      <span class="form-text text-danger ms-2" 
+      *ngIf="categoryForm.controls.category.touched && categoryForm.controls.category.errors?.['required']">
+      This field is required 
+      </span>    
+
+      <div class="container text-center g-1 my-2">     
+  <button class="btn btn-danger" type="button"
+      (click)="RemoveCategory($event)">Remove</button>
+  </div>
+</form>
+

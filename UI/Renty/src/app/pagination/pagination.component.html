@@ -1,0 +1,17 @@
+<nav *ngIf="data" aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+      <li class="page-item">
+        <button class="page-link" (click)="showPreviousPage()" aria-label="Previous">
+          <span aria-hidden="true">&laquo;</span>
+        </button>
+      </li>
+      <li *ngFor="let page of pageNumbers" class="page-item">
+        <button class="page-link" (click)="showPage(page)">{{page}}</button>
+        </li>
+      <li class="page-item">
+        <button class="page-link" (click)="showNextPage()" aria-label="Next">
+          <span aria-hidden="true">&raquo;</span>
+        </button>
+      </li>
+    </ul>
+  </nav>

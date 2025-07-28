@@ -1,0 +1,21 @@
+<form class="container" [formGroup]="areaForm">
+    
+    <input type="text" class="form-control" formControlName="name" 
+    placeholder="Enter the area name">
+
+    <span class="form-text text-danger ms-2" 
+    *ngIf="areaForm.controls.name.touched && areaForm.controls.name.errors?.['required']" >
+    This field is required 
+    </span>
+
+    
+    <select class="form-select mt-2" formControlName="city">
+        <option [value]="0">-Select-</option>
+        <option *ngFor="let city of cities" [value]="city.id">{{city.name}}</option>
+      </select>
+
+    <div class="container text-center g-1 my-2">    
+  <button class="btn btn-success" type="button"
+      (click)="AddArea($event)">Add</button>
+  </div>
+

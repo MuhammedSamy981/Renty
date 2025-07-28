@@ -1,0 +1,14 @@
+<form class="container" [formGroup]="countryForm">
+    <input type="text" class="form-control" formControlName="name" 
+    placeholder="Enter the country name">
+
+    <span class="form-text text-danger ms-2" 
+    *ngIf="countryForm.controls.name.touched && countryForm.controls.name.errors?.['required']" >
+    This field is required 
+    </span>
+    
+    <div class="container text-center g-1 my-2">      
+  <button class="btn btn-success" type="button"
+      (click)="AddCountry($event)">Add</button>
+  </div>
+</form>

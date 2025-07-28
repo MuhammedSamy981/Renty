@@ -1,0 +1,59 @@
+/* You can add global styles to this file, and also import other style files */
+/*@import url("../node_modules/bootstrap-icons/font/bootstrap-icons.css");
+@import url("../node_modules/font-awesome/css/font-awesome.css");*/
+
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+/*main
+{
+    height: 100%;
+  margin: 0;
+}*/
+
+.btn-violet {
+    --bd-violet-bg: #712cf9;
+    --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
+  
+    --bs-btn-font-weight: 600;
+    --bs-btn-color: var(--bs-white);
+    --bs-btn-bg: var(--bd-violet-bg);
+    --bs-btn-border-color: var(--bd-violet-bg);
+    --bs-btn-hover-color: var(--bs-white);
+    --bs-btn-hover-bg: #6528e0;
+    --bs-btn-hover-border-color: #6528e0;
+    --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+    --bs-btn-active-color: var(--bs-btn-hover-color);
+    --bs-btn-active-bg: #5a23c8;
+    --bs-btn-active-border-color: #5a23c8;
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: var(--bs-white);
+    --bs-btn-disabled-bg: var(--bd-violet-bg);
+    --bs-btn-disabled-border-color: var(--bd-violet-bg);
+  }
+
+.text-violet {
+    --bs-text-opacity: 1;
+    --bs-violet-rgb: 112.520718, 44.062154, 249.437846;
+    color: rgba(var(--bs-violet-rgb), var(--bs-text-opacity)) !important;
+}
+
+.border-violet {
+  --bs-border-opacity: 1;
+  --bs-violet-rgb: 112.520718, 44.062154, 249.437846;
+  border-color: rgba(var(--bs-violet-rgb), var(--bs-border-opacity));
+}
+
+
+.bg-violet {
+    --bs-bg-opacity: 1;
+     --bs-violet-rgb: 112.520718, 44.062154, 249.437846;
+    background-color: rgba(var(--bs-violet-rgb), var(--bs-bg-opacity)) !important;
+  }

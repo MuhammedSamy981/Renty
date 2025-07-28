@@ -1,0 +1,18 @@
+<form class="container" [formGroup]="areaForm">
+
+    <select  class="form-select" formControlName="area" >
+      <option [value]="0">-Select-</option>
+      <option *ngFor="let area of areas" [value]="area.id">{{area.name}}</option>
+    </select>
+
+    <span class="form-text text-danger ms-2" 
+    *ngIf="areaForm.controls.area.touched && areaForm.controls.area.errors?.['required']">
+    This field is required 
+    </span>    
+
+     <div class="container text-center g-1 my-2">     
+  <button class="btn btn-danger" type="button"
+    (click)="RemoveArea($event)">Remove</button>
+</div>
+</form>
+

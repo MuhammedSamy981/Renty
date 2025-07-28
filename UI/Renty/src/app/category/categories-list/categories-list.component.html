@@ -1,0 +1,9 @@
+
+<h1 *ngIf="!categories"> loading .....</h1>
+
+
+<section *ngIf="categories" class="bg-light mt-5">
+<div *ngFor="let category of categories">
+    <a class="btn btn-danger" [routerLink]="'/product/'+category.id">{{category.name}}</a> 
+</div>
+</section>

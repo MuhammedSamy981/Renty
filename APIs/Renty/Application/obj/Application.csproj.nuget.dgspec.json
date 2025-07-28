@@ -1,0 +1,134 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\ITI\\My Websits\\Renty\\APIs\\Renty\\Application\\Application.csproj": {}
+  },
+  "projects": {
+    "D:\\ITI\\My Websits\\Renty\\APIs\\Renty\\Application\\Application.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\ITI\\My Websits\\Renty\\APIs\\Renty\\Application\\Application.csproj",
+        "projectName": "Application",
+        "projectPath": "D:\\ITI\\My Websits\\Renty\\APIs\\Renty\\Application\\Application.csproj",
+        "packagesPath": "C:\\Users\\Muhammad\\.nuget\\packages\\",
+        "outputPath": "D:\\ITI\\My Websits\\Renty\\APIs\\Renty\\Application\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Muhammad\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "D:\\ITI\\My Websits\\Renty\\APIs\\Renty\\Domain\\Domain.csproj": {
+                "projectPath": "D:\\ITI\\My Websits\\Renty\\APIs\\Renty\\Domain\\Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[14.0.0, )"
+            },
+            "FluentValidation": {
+              "target": "Package",
+              "version": "[11.11.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\ITI\\My Websits\\Renty\\APIs\\Renty\\Domain\\Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\ITI\\My Websits\\Renty\\APIs\\Renty\\Domain\\Domain.csproj",
+        "projectName": "Domain",
+        "projectPath": "D:\\ITI\\My Websits\\Renty\\APIs\\Renty\\Domain\\Domain.csproj",
+        "packagesPath": "C:\\Users\\Muhammad\\.nuget\\packages\\",
+        "outputPath": "D:\\ITI\\My Websits\\Renty\\APIs\\Renty\\Domain\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Muhammad\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "microsoft.aspnetCore.identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

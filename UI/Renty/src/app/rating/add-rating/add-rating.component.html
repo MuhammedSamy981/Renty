@@ -1,0 +1,69 @@
+
+<div class="card-body border-bottom" [hidden]="!AddingStatus">
+
+    <div class="d-flex mb-3 align-items-center">
+      <img src="https://i.ibb.co/TL25Mpf/def-face.jpg" alt=""
+       class="rounded-circle avatar-lg me-2" style="
+      width: 50px;
+      height: 50px;
+  ">
+       <div class="ml-2">
+          <h5 class="mb-0">
+            {{fullName}}
+          </h5>
+          <small> {{ratingDate | date : "medium"}}</small>
+       </div>
+    </div>
+    <div class="mb-2">
+       <app-stars-ratings [rating]="rating"></app-stars-ratings>
+    </div>
+    <p>
+      {{comment}}
+    </p>
+    <button class="btn btn-danger btn-sm mr-2"
+     (click)="deleteRating()">Remove</button>
+
+</div>
+
+
+<div class="text-center my-3" [hidden]="checkUserId || ratingId!=undefined || AddingStatus">
+  <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ratingModal">Write a Review</button>
+</div>
+
+
+
+<!-- Rating Modal -->
+<div class="modal fade" id="ratingModal" tabindex="-1" aria-labelledby="ratingModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="ratingModalLabel">Write a Review</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="ratingGroup">
+          <div class="mb-3">
+            <label for="rating" class="form-label">Your Rating</label>
+            <div class="star-rating animated-stars">
+              <ng-container *ngFor="let star of checkedStars">
+              <input  type="radio" id="star{{star}}" formControlName="rating" [value]="star">
+              <label  for="star{{star}}" class="bi bi-star-fill"></label>
+            </ng-container>
+              </div>
+          </div>
+          <div class="mb-3">
+            <label for="review" class="form-label">Your Review</label>
+            <textarea class="form-control" formControlName="comment" id="review" rows="3" required></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary"
+        [disabled]="this.ratingGroup.value.rating ==0 || this.ratingGroup.value.comment ==''"
+        (click)="addRating()" data-bs-dismiss="modal">Submit Review</button>
+      </div>
+    </div>
+  </div>
+</div>
+

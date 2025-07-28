@@ -1,0 +1,65 @@
+<div *ngIf="!product" class="d-flex align-items-center justify-content-center" 
+style="height: 739px;">
+    <div class="spinner-border" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+
+<div *ngIf="product" class="container mt-5">
+  <div class="row">   
+        <!-- Product Images -->
+        <div class="col-md-8 mb-4">
+      <app-images-carousel [images]="product.images!"></app-images-carousel>
+         </div>
+         
+      <!-- Product card -->
+      <div class="col-md-4">
+          <h2 class="mb-3">{{product.name}}</h2>
+          <div class="mb-3">
+              <span class="h4 me-2">{{product.price}} EGP/H</span>
+          </div>
+          <div class="mb-4">
+              <h5>Location : {{product.user?.areaName}}
+                ,{{product.user?.cityName}},{{product.user?.countryName}}</h5>
+                <h5>Provider : {{product.user?.fullName}}</h5>
+                <h5>Phone number : 
+       <a #showLink type="button" class="text-violet text-decoration-none" 
+       (click)="ShowPhoneNumber(product.user?.phoneNumber!,showLink)">
+        Show phone number
+       </a>
+                </h5>
+          </div>
+      </div>
+
+          <!-- Product Details -->
+          <div class="col-md-8">
+            <h2 class="mb-3">Description</h2>
+            <p class="mb-4">{{product.description}} </p>
+        </div>
+  </div>
+
+
+  <section class="Rating_Section">
+    <h2 class="mb-3">Ratings & Reviews</h2>
+        <div class="card bg-transparent">
+          <div class="card-header bg-transparent p-3">
+             <h4 class="mb-0 h5">{{product.ratings?.length}} Comments</h4>
+          </div>
+ <app-ratings-list [ratings]="product.ratings!" [currentUserId]="currentUserId"
+ [ratingId]="ratingId" [deletingStatus]="deletingStatus"
+ [reportStatus]="(currentUserId==product.user?.id) && currentUserId!='undefined'"
+ (sendUpdatedRatingId)="getUpdatedRatingId($event)"></app-ratings-list>
+
+       <app-add-rating [productId]="product.id" [userId]="currentUserId" 
+       [checkUserId]="(currentUserId==product.user?.id)||currentUserId=='undefined'"
+       [ratingId]="ratingId"></app-add-rating>
+
+      </div>
+
+
+  </section>
+
+
+</div>
+
+

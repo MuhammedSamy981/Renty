@@ -1,0 +1,43 @@
+
+<div *ngIf="!products || products==undefined" class="d-flex align-items-center justify-content-center" 
+style="height: 587px;">
+    <div class="spinner-border" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+
+<table *ngIf="products" class="text-center container table table-striped">
+<caption class="caption-top">
+   <a class="btn btn-primary"
+   [routerLink]="'/product/add'"
+   >Add New Product</a>
+</caption>
+ <thead>
+   <th>#</th>
+    <th>Name</th>  
+    <th>Category</th>
+    <th>Price</th>
+    <th>Status</th>
+    <th>Date</th>
+ </thead>
+ <tbody *ngIf="products!">
+    <tr *ngFor="let product of paginatedProducts">
+      <td>{{products.indexOf(product)+1}}</td>
+      <td>{{product.name}}</td>
+      <td>{{product.categoryName}}</td>
+      <td>{{product.price}} EGP/day</td>
+      <td [class]="product.status">{{product.status}}</td>
+     <td>{{product.addingDate | date : "medium"}}</td>
+   <td>
+      <a class="btn btn-info me-md-1 mb-1" [routerLink]="'/product/'+product.id">Details</a>
+      <a class="btn btn-success me-md-1 mb-1" [routerLink]="'/product/edit/'+product.id">Edit</a>
+      <a class="btn btn-danger mb-1" [routerLink]="'/product/delete/'+product.id">Delete</a> 
+   </td>
+    </tr>
+ </tbody>
+</table>
+
+<app-pagination *ngIf="products!.length!=0 && sizeOfPage!=0"
+[sizeOfPage]="sizeOfPage"
+[data]="products!"
+(sendedData)="GetData($event)"></app-pagination>

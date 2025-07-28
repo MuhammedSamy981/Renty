@@ -1,0 +1,4 @@
+<i class="bi bi-star-fill rating-star text-warning" *ngFor="let star of checkedStars"></i> 
+<i class="bi bi-star-half rating-star text-warning" *ngIf="rating! % 1 !== 0"></i>
+<i class="bi bi-star rating-star text-warning" *ngFor="let star of uncheckedStars"></i>
+

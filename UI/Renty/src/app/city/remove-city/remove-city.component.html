@@ -1,0 +1,18 @@
+<form class="container" [formGroup]="cityForm">
+
+    <select  class="form-select" class="form-select" formControlName="city" >
+      <option [value]="0">-Select-</option>
+      <option *ngFor="let city of cities" [value]="city.id">{{city.name}}</option>
+    </select>
+
+    <span class="form-text text-danger ms-2" 
+    *ngIf="cityForm.controls.city.touched && cityForm.controls.city.errors?.['required']">
+    This field is required 
+    </span>    
+
+     <div class="container text-center g-1 my-2">     
+  <button class="btn btn-danger" type="button"
+    (click)="RemoveCity($event)">Remove</button>
+</div>
+</form>
+

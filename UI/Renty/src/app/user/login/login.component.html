@@ -1,0 +1,62 @@
+
+<main class="form-signin w-100 m-auto">
+  <form [formGroup]="loginform" class="needs-validation" novalidate>
+    <img class="mb-4" src="./assets/logo.png" alt="" width="120" height="50">
+    <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+
+
+
+    <div class="form-floating">
+       <input type="email" class="form-control border-violet" id="email" formControlName="email" 
+      placeholder="name@example.com"
+      [ngClass]="{'is-invalid': loginform.controls.email.invalid && submitted}">
+      <label for="floatingInput">Email address</label>
+
+
+          <span class="invalid-tooltip position-absolute top-0 start-50 translate-middle badge" 
+          *ngIf=" loginform.controls.email.errors?.['required']&& submitted">
+          This field is required
+          </span>
+  
+          <span class="invalid-tooltip position-absolute top-0 start-50 translate-middle badge"
+          *ngIf="
+          loginform.controls.email.errors?.['email'] && submitted">
+          email is invalid
+          </span>
+    </div>
+    <div class="form-floating">
+       <input type="password" class="form-control border-violet" id="password" formControlName="password"
+         placeholder="Password"
+         [ngClass]="{'is-invalid':loginform.controls.password.invalid && submitted }">
+        <label for="password">Password</label>
+      
+            <span class="invalid-tooltip position-absolute top-0 start-50 translate-middle badge" 
+            *ngIf="loginform.controls.password.errors?.['required'] && submitted">
+      This field is required
+            </span>
+    </div>
+
+    <div class="my-3 text-center">
+      <a [routerLink]="'/user/forgot-password'">Forgot Password</a>
+    </div>
+    <button (click)="Login()"  class="btn btn-violet w-100 py-2" type="submit">Sign in</button>
+    
+  </form>
+ 
+              <hr class="my-4">
+             <h2 class="fs-5 fw-bold mb-3">Or use a third-party</h2>
+    <button class="w-100 py-2 mb-2 btn rounded-2" style="background-color: #0866FF;"
+    type="button" (click)="loginWithFacebook()">
+    <div class="row">
+      <div class="col-1">
+      <i class="bi bi-facebook me-5"></i>
+    </div>
+     <div class="col-11" style="font-size: 14px;">
+      Sign in with Facebook 
+    </div>
+    </div>
+    </button>
+ 
+    <div id="google-button" ></div>
+</main>
+
